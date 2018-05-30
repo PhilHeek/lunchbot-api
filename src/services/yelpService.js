@@ -13,13 +13,23 @@ function getAllRestaurant() {
     limit: config.yelpPreferences.limit
   };
 
-  console.log('searchRequest: ', searchRequest);
-
   return client.search(searchRequest).then(response => {
-    return response.jsonBody.businesses[0].name;
-    // const restaurants = response.jsonBody.businesses;
-    // const restaurant = restaurants[Math.floor(Math.random() * restaurants.length)];
-    // console.log('restaurant name:', restaurant.name);
+    const restaurants = response.jsonBody.businesses;
+    const restaurant = restaurants[Math.floor(Math.random() * restaurants.length)];
+
+    const establishment = {
+      name: restaurant.name,
+      rating: restaurant.rating,
+      price: restaurant.price,
+      isClosed: restaurant.is_closed,
+      image: restaurant.image_url,
+      coordinates: {
+        latitude: restaurant.coordinates.latitude,
+        longitude: restaurant.coordinates.longitude,
+      },
+    };
+
+    return establishment;
   }).catch(e => {
     console.log(e);
   });
