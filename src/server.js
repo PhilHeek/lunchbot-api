@@ -2,7 +2,6 @@ import express from 'express';
 const server = express();
 const port = process.env.PORT || 3000;
 import morgan from 'morgan';
-import user from './models/user';
 import config from './config';
 import bodyParser from 'body-parser';
 import yelp from 'yelp-fusion';

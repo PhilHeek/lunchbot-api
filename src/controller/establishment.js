@@ -3,8 +3,11 @@
 import yelpService from '../services/yelpService';
 
 function listAllEstablishment(req, res) {
-  // res.send(yelpService.getAllRestaurant());
-  res.send('TOTO');
+  yelpService.getAllRestaurant()
+  .then(data => {
+    let result = data;
+    res.send(result);
+  });
 
 }
 
