@@ -16,14 +16,7 @@ const config = {
     sortby: 'rating, review_count',
     open_now: true,
     limit: 20
-  },
-  // slack: {
-  //   // Philipp's channel
-  //   webhookUri: 'https://hooks.slack.com/services/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',
-  //   channel: '',
-  //   username: 'Gordon Ramsay\'s suggestion',
-  //   emoji: ':ghost:'
-  // }
-}
+  }
+};
 
 module.exports = config;
