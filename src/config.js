@@ -14,7 +14,7 @@ const config = {
     term: 'food, restaurants',
     categories: 'restaurants',
     sortby: 'rating, review_count',
-    open_now: true,
+    open_now: false,
     limit: 20
   }
 };

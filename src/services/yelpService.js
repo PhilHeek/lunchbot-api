@@ -4,6 +4,8 @@ import config from '../config';
 function getAllRestaurant() {
   const client = yelp.client(config.yelpApi.api_key);
 
+  console.log('toto')
+
   const searchRequest = {
     latitude: config.location.latitude,
     longitude: config.location.longitude,
@@ -13,9 +15,19 @@ function getAllRestaurant() {
     limit: config.yelpPreferences.limit
   };
 
+  console.log('titi');
+
   return client.search(searchRequest).then(response => {
+    if (response.jsonBody.businesses.length === 0) {
+      console.log('empty businesses: ', response.jsonBody);
+      return;
+    }
+    console.log('res: ', response);
     const restaurants = response.jsonBody.businesses;
     const restaurant = restaurants[Math.floor(Math.random() * restaurants.length)];
+
+    console.log('restaurants: ', restaurants);
+    console.log('restaurant: ', restaurant)
 
     const establishment = {
       name: restaurant.name,
@@ -31,7 +43,7 @@ function getAllRestaurant() {
 
     return establishment;
   }).catch(e => {
-    console.log(e);
+    console.log('Error on fetch establishment: ', e);
   });
 }
 
