@@ -2,8 +2,10 @@
 
 import yelpService from '../services/yelpService';
 
-function listAllEstablishment(req, res) {
-  yelpService.getAllRestaurant()
+function listAllEstablishment (req, res) {
+
+  console.log('query: ', req.params);
+  yelpService.getAllRestaurant(req.params.latitude, req.params.longitude)
   .then(data => {
     let result = data;
     res.send(result);
@@ -11,8 +13,4 @@ function listAllEstablishment(req, res) {
 
 }
 
-function getSingleEstablishment(req, res) {
-  res.send('SingleEstablishment');
-}
-
-module.exports = { listAllEstablishment, getSingleEstablishment };
+module.exports = { listAllEstablishment };
